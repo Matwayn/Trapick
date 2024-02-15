@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     
     // Check if the password matches
-    if ($password == "1234") {
+    if ($password == "trapick") {
         header("Location: main.html");
         exit();
     } else {     
@@ -11,4 +11,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
-?>
