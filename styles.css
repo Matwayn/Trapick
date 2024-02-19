@@ -533,6 +533,7 @@ body {
     display: flex;
     columns: 2;
     backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(100px);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
     transition: all 200ms;
 
@@ -662,7 +663,6 @@ footer {
     .box {
         margin-top: 10%;
         margin-right: 0 !important;
-
     }
 
     .genre-list ul {
@@ -671,15 +671,13 @@ footer {
     }
 
     .inputbox {
-
         width: 100%;
         display: flex;
+    }
 
-        &:hover,
-        &:focus {
-            width: 100% !important;
-        }
-
+    .inputbox:hover,
+    .inputbox:focus {
+        width: 100% !important;
     }
 
     .category {
@@ -690,51 +688,57 @@ footer {
         display: block;
         min-height: 7vh !important;
         height: auto !important;
+    }
 
-        img {
-            max-width: 20%;
-            right: 0;
-            top: 0;
-            margin-right: 10%;
-            margin-bottom: 20%;
-            position: absolute;
-            display: block;
-        }
+    .popup img {
+        max-width: 20%;
+        border: none;
+        right: 0;
+        top: 0;
+        margin-right: 10%;
+        margin-bottom: 20%;
+        position: absolute !important;
+        display: block;
+    }
 
-        h1 {
+    .popup h1 {
+        text-overflow: ellipsis;
+        position: absolute;
+        top: 0;
+    }
 
-            text-overflow: ellipsis;
-            position: absolute;
-            top: 0;
-        }
+    .popup h3 {
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        margin: 0 50px 0 10px;
+    }
 
-        h3 {
-            word-break: break-word;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: flex;
-            margin: 0 50px 0 10px;
-        }
-        .close {
-            margin: 5px 10px !important;
-            right: 0 !important;
-            top: 0 !important;
-        }
+    .popup .close {
+        margin: 5px 10px !important;
+        right: 0 !important;
+        top: 0 !important;
+        -webkit-appearance: none;
+        -webkit-font-smoothing: antialiased;
+        position: fixed !important;
     }
 
     #popup-year {
-
         margin-top: 50px;
         display: flex;
     }
 
     #popup-plot {
-        overflow-y: scroll !important;
+        overflow-y: auto !important; /* Use 'auto' to enable scrolling when necessary */
+        -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
         padding: 0;
         min-height: 20vh !important;
         margin-bottom: 20% !important;
         margin-top: 10% !important;
         text-wrap: balance;
+       -webkit-min-content: 25vh;
+       height: 25vh;
     }
 
     #popup-title {
@@ -756,10 +760,15 @@ footer {
         user-select: none;
         margin-bottom: 5%;
         margin-inline: 0px !important;
+        -webkit-user-select: none;
+        
+    }
 
-        .button {
-            margin: 20px auto;
-        }
+    .play .button {
+        margin: 20px auto;
+        position: relative;
+        -webkit-box-flex: 1;
+        flex: 1;
     }
 
     .menu-series {
@@ -768,12 +777,11 @@ footer {
         position: relative;
         justify-content: center;
         margin: 50px 0 24px;
+    }
 
-        .button {
-
-            width: 100px !important;
-            margin: 5px !important;
-        }
+    .menu-series .button {
+        width: 100px !important;
+        margin: 5px !important;
     }
 
     .content-button {
@@ -796,6 +804,7 @@ footer {
         height: auto;
         position: absolute;
         right: 0%;
+        border: none;
     }
 
     .movie-card {
@@ -822,10 +831,10 @@ footer {
         margin-right: 50px;
         z-index: 1;
         justify-content: space-between;
+    }
 
-        h2 {
-            height: 40px !important;
-        }
+    .movie-info h2 {
+        height: 40px !important;
     }
 
     .movie-info>* {
@@ -838,10 +847,10 @@ footer {
     }
 
     .film-count {
-
-        top: 0 !important
+        top: 0 !important;
     }
 }
+
 
 @media screen and (min-width: 700px) and (max-width: 1000px) {
     .menu-series {
