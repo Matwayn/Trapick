@@ -9,7 +9,7 @@ $hash = md5($random1.$password.$random2);
 
 if (isset($_SESSION['login']) && $_SESSION['login'] == $hash) {
 
-	header("Location: main2.php");
+	header("Location: main.php");
 	die();
 }
 else if (isset($_POST['submit'])) {
