@@ -514,7 +514,6 @@ async function fetchSerieDetails(seriesName, season) {
                 //loader
                 // const loader = document.getElementById('loader-1');
                 //loader.classList.add('hide');
-                console.log(globalSerieInfo);
                 return (globalSerieInfo);
             }
         })

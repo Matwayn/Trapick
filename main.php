@@ -1,9 +1,20 @@
+<?php
+session_start();
+if(isset($_GET['logout'])) {
+	unset($_SESSION["login"]);
+    header("Location: login_1.php");
+}
+if (!isset($_SESSION["login"])) {
+  header("Location: login_1.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/css/solid.min.css">
     <title>TkP</title>
@@ -122,7 +133,8 @@
             });
 
             let id1;
-            let globalSerieInfo = [];
+            let serieInfocontent = [];
+
             function handlePosterClick(id) {
                 id1 = id;
                 const movieselected = document.getElementById(id);
@@ -394,6 +406,7 @@
 
 
             let pathseries = [];
+            
             function showEpisodes() {
                 var seasonsList = document.getElementById('seasons-list');
                 var episodesList = document.getElementById('episodes-list');
@@ -406,7 +419,7 @@
                     const seasonText = document.getElementById('button-saison').textContent;
                     const seasonNumber = seasonText.replace(/\D/g, '');
                     const season = 'S' + seasonNumber;
-                    let data = globalSerieInfo;
+                    let data = serieInfocontent;
                     let numberOfFiles = findSeasonFilesByIdAndSeason(id1, season).length;
                     if (numberOfFiles === 0) {
                         console.log(`Pas d'épisodes trouvés avec la Saison ${seasonNumber}`);
@@ -417,7 +430,7 @@
 
 
                     function findSeasonFilesByIdAndSeason(id1, season) {
-                        let series = data.find(item => item.id === id1);
+                        let series = data.find(serie => serie.id === id1);
                         if (!series) {
                             console.log(`Pas de saisons trouvées avec la serie ${id1}`);
                             closePopup();
@@ -571,7 +584,7 @@
     <footer>
         <p>&copy;Trapick</p>
     </footer>
-    <script type="module" src="/js/script.js"></script>
+    <script type="module" src="/js/script no fetch.js"></script>
     <!--<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>-->
 </body>
 

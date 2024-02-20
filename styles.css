@@ -720,6 +720,7 @@ footer {
         right: 0 !important;
         top: 0 !important;
         -webkit-appearance: none;
+        appearance: none;
         -webkit-font-smoothing: antialiased;
         position: fixed !important;
     }
